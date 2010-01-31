@@ -1,0 +1,22 @@
+Job Queue
+--------------------------------------------------
+A job queue implementation using Zend Framework's messaging queue.
+
+Class Files
+--------------------------------------------------
+Class Files are located in 
+
+	job_queue/library/Alanstormdotcom/job
+	
+Sample Application
+--------------------------------------------------
+Source tree also include a sample application that demonstates
+
+1. Bootstrapping into a Zend_Application
+
+2. A sample job script (Alanstormdotcom_Job_Example)
+
+3. Adding jobs to the queue
+
+4. Reading a job from the queue
+
