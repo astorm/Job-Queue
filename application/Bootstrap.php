@@ -62,6 +62,30 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		return true;
     }
     
+    private function getMysqlFileContents($path)
+    {
+		$path = $this->guessFrameworkIncludePath();
+		$full_path = $path . 
+		'/' . 
+		'Zend/Queue/Adapter/Db/queue.sql';
+		
+		if(file_exists($full_path))
+		{
+			return file_get_contents($full_path);
+		}
+		
+		$full_path = $path . 
+		'/' . 
+		'Zend/Queue/Adapter/Db/mysql.sql';	
+		if(file_exists($full_path))
+		{
+			return file_get_contents($full_path);
+		}
+		
+		//if we're still here we couldn't find a file
+		throw new Exception('Could not find sql file to create message queue');
+    }
+    
 	/**
 	* Creates the message queue mysql tables if they don't exist already
 	*
@@ -71,9 +95,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	{					   
 		$path = $this->guessFrameworkIncludePath() . 
 		'/' . 
-		'Zend/Queue/Adapter/Db/queue.sql';
-		
-		$sql = file_get_contents($path);
+		'Zend/Queue/Adapter/Db/queue.sql';		
+		$sql = $this->getMysqlFileContents($path);
+
 		if ($this->hasPluginResource("db")) {
 			$dbResource = $this->getPluginResource("db");
 			$db = $dbResource->getDbAdapter();
@@ -129,4 +153,3 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		Zend_Registry::set(self::NAME_ORDERQUEUE,$queue);
 	}	
 }
-
