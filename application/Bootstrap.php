@@ -92,10 +92,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	* This can be removed/commented out if the tables are already there
 	*/    
 	protected function _initMessageQueueTables()
-	{					   
-		$path = $this->guessFrameworkIncludePath() . 
-		'/' . 
-		'Zend/Queue/Adapter/Db/queue.sql';		
+	{					   		
 		$sql = $this->getMysqlFileContents($path);
 
 		if ($this->hasPluginResource("db")) {
