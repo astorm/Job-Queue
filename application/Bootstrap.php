@@ -95,7 +95,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	{					   		
 		$sql = $this->getMysqlFileContents($path);
 
-		if ($this->hasPluginResource("db")) {
+		if ($this->hasPluginResource("db")) 
+		{
 			$dbResource = $this->getPluginResource("db");
 			$db = $dbResource->getDbAdapter();
 			if(!$this->hasQueueTables($db))
@@ -115,7 +116,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	const DB_PREREQUISITES_NAME = 'db';
     protected function _initDb()
     {
-		if ($this->hasPluginResource("db")) {
+		if ($this->hasPluginResource("db")) 
+		{
 			$dbResource = $this->getPluginResource("db");
 			$db = $dbResource->getDbAdapter();
 			Zend_Registry::set(self::DB_PREREQUISITES_NAME, $db);			
