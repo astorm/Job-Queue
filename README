@@ -10,7 +10,7 @@ Class Files are located in
 	
 Sample Application
 --------------------------------------------------
-Source tree also include a sample application that demonstates
+Source tree also includes a sample application that demonstates
 
 1. Bootstrapping into a Zend_Application
 
